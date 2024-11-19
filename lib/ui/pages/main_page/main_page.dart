@@ -1,16 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:money_traffic_app/constans/app_constans.dart';
 import 'package:money_traffic_app/init/lang/locale_keys.g.dart';
 import 'package:money_traffic_app/services/local_data_base/entity/expenses.dart';
 import 'package:money_traffic_app/ui/alert_dialog/expenses_alert.dart';
+import 'package:money_traffic_app/ui/charts/bar_chart.dart';
+import 'package:money_traffic_app/ui/charts/pie_chart.dart';
 import 'package:money_traffic_app/ui/pages/main_page/bloc/expenses_bloc.dart';
 import 'package:money_traffic_app/ui/pages/main_page/bloc/expenses_state.dart';
 import 'package:money_traffic_app/ui/pages/main_page/widgets/change_locale_widget.dart';
 import 'package:money_traffic_app/ui/pages/main_page/widgets/change_theme_widget.dart';
 import 'package:money_traffic_app/ui/pages/main_page/widgets/period_widget.dart';
 import 'package:money_traffic_app/ui/pages/search/search_page.dart';
+import 'package:money_traffic_app/ui/profile/profile.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -59,8 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
           bottom: TabBar(
             tabs: [
               Tab(icon: Text(LocaleKeys.toDay.tr())),
-              Tab(icon: Text(LocaleKeys.perMonth.tr())),
-              Tab(icon: Icon(Icons.show_chart_sharp)),
+              const Tab(icon: Icon(Icons.show_chart_sharp)),
+              Tab(icon: Text(LocaleKeys.profile.tr())),
             ],
           ),
           title: PeriodWidget(expensesBloc: _expensesBloc),
@@ -81,16 +85,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     sum: state.sum,
                     listExpenses: state.listExpenses,
                   ),
-                  _CustomListView(
-                    expensesBloc: _expensesBloc,
-                    sum: state.sumForFood,
-                    listExpenses: state.monthExpenses,
-                  ),
-                  _CustomListView(
-                    expensesBloc: _expensesBloc,
-                    sum: state.sumMonth,
-                    listExpenses: state.monthExpenses,
-                  ),
+                  // _CustomListView(
+                  //   expensesBloc: _expensesBloc,
+                  //   sum: state.sumForFood,
+                  //   listExpenses: state.monthExpenses,
+                  // ),
+                  Charts(),
+                  ProfilePage(),
                 ],
               );
             },
@@ -174,6 +175,23 @@ class _CustomListView extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class Charts extends StatelessWidget {
+  const Charts({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const PieChartSample(),
+          BarChartSample(),
+          const SizedBox(height: 100),
+        ],
+      ),
     );
   }
 }
