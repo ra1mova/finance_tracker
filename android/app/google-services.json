@@ -12,7 +12,20 @@
           "package_name": "com.example.money_traffic_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "36490460340-6p6fjkoh7eor4p34n9vord9mchm29a5j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.money_traffic_app",
+            "certificate_hash": "c27d918048bd93f8fb4bee91200f74bd14a8ad18"
+          }
+        },
+        {
+          "client_id": "36490460340-2358kbkshban6v2s8jhhe2ufnuoia5t9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDfA-RbMgxLDUrasWJXVkcyUe3jaMo7PA8"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36490460340-2358kbkshban6v2s8jhhe2ufnuoia5t9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "36490460340-fa584o39jlpl451rggeo76b0hgqvrp1g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.moneyTrafficApp"
+              }
+            }
+          ]
         }
       }
     }
