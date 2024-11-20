@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:money_traffic_app/constans/app_constans.dart';
 import 'package:money_traffic_app/init/lang/locale_keys.g.dart';
-import 'package:money_traffic_app/services/local_data_base/entity/expenses.dart';
 import 'package:money_traffic_app/ui/pages/main_page/bloc/expenses_bloc.dart';
 
 class AddExpenesBody extends StatefulWidget {
@@ -29,16 +28,16 @@ class _AddExpenesBodyState extends State<AddExpenesBody> {
 
   @override
   void didChangeDependencies() async {
-    final _box = await Hive.openBox<String>(AppConst.commonValuesHiveBox);
-    final _categoryBox =
+    final box = await Hive.openBox<String>(AppConst.commonValuesHiveBox);
+    final categoryBox =
         await Hive.openBox<String>(AppConst.commonCategoryHiveBox);
 
-    _listOfCommonCategory = _categoryBox.values.toList().isEmpty
+    _listOfCommonCategory = categoryBox.values.toList().isEmpty
         ? AppConst.commonCategory
-        : _categoryBox.values.toList();
-    _listOfCommonValues = _box.values.toList().isEmpty
+        : categoryBox.values.toList();
+    _listOfCommonValues = box.values.toList().isEmpty
         ? AppConst.commonValues
-        : _box.values.toList();
+        : box.values.toList();
 
     setState(() {});
 
@@ -271,18 +270,18 @@ class _InputFormState extends State<_InputForm> {
                                     onPressed: () async {
                                       Navigator.of(context).pop();
 
-                                      final _box = widget.isCategory
+                                      final box = widget.isCategory
                                           ? await Hive.openBox<String>(
                                               AppConst.commonCategoryHiveBox,
                                             )
                                           : await Hive.openBox<String>(
                                               AppConst.commonValuesHiveBox,
                                             );
-                                      await _box.clear();
+                                      await box.clear();
                                       for (var i = 0;
                                           i < widget.listOfCommonValues.length;
                                           i++) {
-                                        _box.put(
+                                        box.put(
                                           widget.listOfCommonValues[i],
                                           widget.listOfCommonValues[i],
                                         );

@@ -13,13 +13,13 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('theme');
 
-  Future<void> _checkHiveTheme() async {
+  Future<void> checkHiveTheme() async {
     if (Hive.box('theme').isEmpty) {
       await Hive.box('theme').put('theme', 'dark');
     }
   }
 
-  await _checkHiveTheme();
+  await checkHiveTheme();
   runApp(
     EasyLocalization(
         supportedLocales: LanguageManager.instance.supportedLocales,

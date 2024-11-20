@@ -43,9 +43,9 @@ class CustomAlertDialog {
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () async {
-              final _box =
+              final box =
                   await Hive.openBox<Expenses>(AppConst.expensesHiveBox);
-              await _box.deleteAt(index);
+              await box.deleteAt(index);
               expensesBloc
                   .add(GetExpensesPeriod(range: AppConst.initialDateTimeRange));
               Navigator.pop(context);

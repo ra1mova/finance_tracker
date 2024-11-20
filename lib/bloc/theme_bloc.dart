@@ -8,10 +8,10 @@ part 'theme_state.dart';
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   ThemeBloc() : super(ThemeInitial()) {
     on<ChangeThemeEvent>((event, emit) {
-      final _box = Hive.box('theme');
-      _box.put('theme', event.theme);
+      final box = Hive.box('theme');
+      box.put('theme', event.theme);
 
-      switch (_box.get('theme')) {
+      switch (box.get('theme')) {
         case 'light':
           emit(ThemeChangedState(theme: ThemeData.light()));
           break;

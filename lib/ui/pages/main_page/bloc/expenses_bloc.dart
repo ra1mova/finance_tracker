@@ -33,8 +33,8 @@ class ExpensesBloc extends Bloc<ExpensesEvent, UserExpenses> {
         Hive.registerAdapter(ExpensesAdapter());
       }
 
-      final _box = await Hive.openBox<Expenses>(AppConst.expensesHiveBox);
-      _box.add(
+      final box = await Hive.openBox<Expenses>(AppConst.expensesHiveBox);
+      box.add(
         Expenses(
           category: event.categpry,
           cost: event.cost,
@@ -53,9 +53,9 @@ class ExpensesBloc extends Bloc<ExpensesEvent, UserExpenses> {
           Hive.registerAdapter(ExpensesAdapter());
         }
 
-        final _box = await Hive.openBox<Expenses>(AppConst.expensesHiveBox);
+        final box = await Hive.openBox<Expenses>(AppConst.expensesHiveBox);
 
-        listExpenses = _box.values
+        listExpenses = box.values
             .where((element) => element.date.isThisMonth(DateTime.now()))
             .toList();
 
@@ -78,9 +78,9 @@ class ExpensesBloc extends Bloc<ExpensesEvent, UserExpenses> {
         Hive.registerAdapter(ExpensesAdapter());
       }
 
-      final _box = await Hive.openBox<Expenses>(AppConst.expensesHiveBox);
+      final box = await Hive.openBox<Expenses>(AppConst.expensesHiveBox);
 
-      listExpenses = _box.values
+      listExpenses = box.values
           .where((element) => element.date.isSameDate(event.date))
           .toList();
 
@@ -105,9 +105,9 @@ class ExpensesBloc extends Bloc<ExpensesEvent, UserExpenses> {
           Hive.registerAdapter(ExpensesAdapter());
         }
 
-        final _box = await Hive.openBox<Expenses>(AppConst.expensesHiveBox);
+        final box = await Hive.openBox<Expenses>(AppConst.expensesHiveBox);
 
-        listExpenses = _box.values
+        listExpenses = box.values
             .where((element) =>
                 element.date.isOnPeriod(date: element.date, range: event.range))
             .toList();
