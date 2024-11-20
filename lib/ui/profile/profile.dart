@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:money_traffic_app/services/auth_service.dart';
+import 'package:money_traffic_app/ui/pages/login.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -11,6 +14,8 @@ class MapScreenState extends State<ProfilePage>
     with SingleTickerProviderStateMixin {
   bool _status = true;
   final FocusNode myFocusNode = FocusNode();
+  final emailController = TextEditingController.fromValue(
+      TextEditingValue(text: FirebaseAuth.instance.currentUser?.email ?? ''));
 
   @override
   void initState() {
@@ -172,6 +177,7 @@ class MapScreenState extends State<ProfilePage>
                           children: <Widget>[
                             Flexible(
                               child: TextField(
+                                controller: emailController,
                                 decoration: const InputDecoration(
                                     hintText: "Enter Email"),
                                 enabled: !_status,
@@ -221,6 +227,8 @@ class MapScreenState extends State<ProfilePage>
             )
           ],
         ),
+        SizedBox(height: 20),
+        _logout(context),
       ],
     );
   }
@@ -302,6 +310,27 @@ class MapScreenState extends State<ProfilePage>
           _status = false;
         });
       },
+    );
+  }
+
+  Widget _logout(BuildContext context) {
+    return ElevatedButton(
+      // style: ElevatedButton.styleFrom(
+      //   backgroundColor: const Color(0xff0D6EFD),
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(14),
+      //   ),
+      //   minimumSize: const Size(double.infinity, 60),
+      //   elevation: 0,
+      // ),
+      onPressed: () async {
+        await AuthService().signout();
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => LoginScreen()));
+      },
+      child: const Text("Sign Out"),
     );
   }
 }

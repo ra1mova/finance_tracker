@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,10 +7,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:money_traffic_app/bloc/theme_bloc.dart';
 import 'package:money_traffic_app/init/lang/codegen_loader.g.dart';
 import 'package:money_traffic_app/init/lang/language_manager.dart';
+import 'package:money_traffic_app/ui/pages/login.dart';
 import 'package:money_traffic_app/ui/pages/main_page/main_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await EasyLocalization.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox('theme');
@@ -76,9 +80,12 @@ class _MyAppState extends State<MyApp> {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           routes: {
-            '/': (context) => const MyHomePage(),
+            '/sign-in': (context) => const LoginScreen(),
+            '/home': (context) => const MyHomePage(),
           },
-          initialRoute: '/',
+          initialRoute:
+              FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/home',
+          // home: LoginScreen(),
         ),
       ),
     );
