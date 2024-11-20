@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'expenses_state.dart';
 
@@ -12,7 +12,7 @@ part of 'expenses_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserExpenses {
@@ -24,7 +24,9 @@ mixin _$UserExpenses {
   List<Expenses> get monthExpenses => throw _privateConstructorUsedError;
   DateTimeRange? get range => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserExpenses
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserExpensesCopyWith<UserExpenses> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +57,8 @@ class _$UserExpensesCopyWithImpl<$Res, $Val extends UserExpenses>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserExpenses
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,11 +104,11 @@ class _$UserExpensesCopyWithImpl<$Res, $Val extends UserExpenses>
 }
 
 /// @nodoc
-abstract class _$$_UserExpensesCopyWith<$Res>
+abstract class _$$UserExpensesImplCopyWith<$Res>
     implements $UserExpensesCopyWith<$Res> {
-  factory _$$_UserExpensesCopyWith(
-          _$_UserExpenses value, $Res Function(_$_UserExpenses) then) =
-      __$$_UserExpensesCopyWithImpl<$Res>;
+  factory _$$UserExpensesImplCopyWith(
+          _$UserExpensesImpl value, $Res Function(_$UserExpensesImpl) then) =
+      __$$UserExpensesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -118,13 +122,15 @@ abstract class _$$_UserExpensesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserExpensesCopyWithImpl<$Res>
-    extends _$UserExpensesCopyWithImpl<$Res, _$_UserExpenses>
-    implements _$$_UserExpensesCopyWith<$Res> {
-  __$$_UserExpensesCopyWithImpl(
-      _$_UserExpenses _value, $Res Function(_$_UserExpenses) _then)
+class __$$UserExpensesImplCopyWithImpl<$Res>
+    extends _$UserExpensesCopyWithImpl<$Res, _$UserExpensesImpl>
+    implements _$$UserExpensesImplCopyWith<$Res> {
+  __$$UserExpensesImplCopyWithImpl(
+      _$UserExpensesImpl _value, $Res Function(_$UserExpensesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserExpenses
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,7 +142,7 @@ class __$$_UserExpensesCopyWithImpl<$Res>
     Object? monthExpenses = null,
     Object? range = freezed,
   }) {
-    return _then(_$_UserExpenses(
+    return _then(_$UserExpensesImpl(
       sum: null == sum
           ? _value.sum
           : sum // ignore: cast_nullable_to_non_nullable
@@ -171,8 +177,8 @@ class __$$_UserExpensesCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserExpenses implements _UserExpenses {
-  const _$_UserExpenses(
+class _$UserExpensesImpl implements _UserExpenses {
+  const _$UserExpensesImpl(
       {this.sum = 0,
       this.sumForFood = 0,
       this.sumMonth = 0,
@@ -199,6 +205,7 @@ class _$_UserExpenses implements _UserExpenses {
   @override
   @JsonKey()
   List<Expenses> get listExpenses {
+    if (_listExpenses is EqualUnmodifiableListView) return _listExpenses;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_listExpenses);
   }
@@ -207,6 +214,7 @@ class _$_UserExpenses implements _UserExpenses {
   @override
   @JsonKey()
   List<Expenses> get monthExpenses {
+    if (_monthExpenses is EqualUnmodifiableListView) return _monthExpenses;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_monthExpenses);
   }
@@ -220,10 +228,10 @@ class _$_UserExpenses implements _UserExpenses {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserExpenses &&
+            other is _$UserExpensesImpl &&
             (identical(other.sum, sum) || other.sum == sum) &&
             (identical(other.sumForFood, sumForFood) ||
                 other.sumForFood == sumForFood) &&
@@ -248,11 +256,13 @@ class _$_UserExpenses implements _UserExpenses {
       const DeepCollectionEquality().hash(_monthExpenses),
       range);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserExpenses
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserExpensesCopyWith<_$_UserExpenses> get copyWith =>
-      __$$_UserExpensesCopyWithImpl<_$_UserExpenses>(this, _$identity);
+  _$$UserExpensesImplCopyWith<_$UserExpensesImpl> get copyWith =>
+      __$$UserExpensesImplCopyWithImpl<_$UserExpensesImpl>(this, _$identity);
 }
 
 abstract class _UserExpenses implements UserExpenses {
@@ -263,7 +273,7 @@ abstract class _UserExpenses implements UserExpenses {
       final bool loading,
       final List<Expenses> listExpenses,
       final List<Expenses> monthExpenses,
-      final DateTimeRange? range}) = _$_UserExpenses;
+      final DateTimeRange? range}) = _$UserExpensesImpl;
 
   @override
   int get sum;
@@ -279,8 +289,11 @@ abstract class _UserExpenses implements UserExpenses {
   List<Expenses> get monthExpenses;
   @override
   DateTimeRange? get range;
+
+  /// Create a copy of UserExpenses
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_UserExpensesCopyWith<_$_UserExpenses> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserExpensesImplCopyWith<_$UserExpensesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

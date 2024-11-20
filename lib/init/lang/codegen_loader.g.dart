@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: prefer_single_quotes
+// ignore_for_file: prefer_single_quotes, avoid_renaming_method_parameters
 
 import 'dart:ui';
 
@@ -10,7 +10,7 @@ class CodegenLoader extends AssetLoader{
   const CodegenLoader();
 
   @override
-  Future<Map<String, dynamic>> load(String fullPath, Locale locale ) {
+  Future<Map<String, dynamic>?> load(String path, Locale locale) {
     return Future.value(mapLocales[locale.toString()]);
   }
 
@@ -29,8 +29,9 @@ class CodegenLoader extends AssetLoader{
   "food": "Еда",
   "from": "От",
   "to": "До",
-  "toDay": "Бүгүнкү күн",
-  "perMonth": "Айына"
+  "toDay": "Сегодня",
+  "perMonth": "За месяц",
+  "profile": "Профиль"
 };
 static const Map<String,dynamic> ky = {
   "expenses": "Чыгымдар",
@@ -47,8 +48,9 @@ static const Map<String,dynamic> ky = {
   "food": "Тамак-аш",
   "from": "Башы",
   "to": "Аягы",
-  "toDay": "Сегодня",
-  "perMonth": "Айына"
+  "toDay": "Бүгүнкү күн",
+  "perMonth": "Айына",
+  "profile": "Профиль"
 };
 static const Map<String,dynamic> en = {
   "expenses": "Expenses",
@@ -66,7 +68,8 @@ static const Map<String,dynamic> en = {
   "from": "From",
   "to": "To",
   "toDay": "To day",
-  "perMonth": "Per month"
+  "perMonth": "Per month",
+  "profile": "Profile"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru, "ky": ky, "en": en};
 }
