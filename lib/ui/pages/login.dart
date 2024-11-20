@@ -13,6 +13,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  ValueNotifier userCredential = ValueNotifier('');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,9 +70,44 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               child: const Text('Login'),
             ),
-            const SizedBox(
-              height: 30.0,
+            const SizedBox(height: 30.0),
+            Center(
+              child: Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: ElevatedButton.icon(
+                  label: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(text: "Continue with "),
+                        TextSpan(
+                          text: "Google",
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                  ),
+                  icon: Image.asset(
+                    'assets/images/google_icon.jpeg',
+                    width: 40,
+                  ),
+                  onPressed: () async {
+                    userCredential.value =
+                        await AuthService().signInWithGoogle();
+                    if (userCredential.value != null) {
+                      print(userCredential.value.user!.email);
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const MyHomePage(),
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ),
             ),
+            const SizedBox(height: 30.0),
             TextButton(
               onPressed: () {
                 Navigator.of(context).push(
